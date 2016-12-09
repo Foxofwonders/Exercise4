@@ -11,16 +11,17 @@ public class Exercise4
 	Total number of Fails: 0
 	
 	Total number of solutions: 0
-	Total number of Fails: 7
+	Total number of Fails: 8
 	
 	One possible solution: [20, 10, 10, 2]
 	One possible solution: [20, 10, 10, 2]
 	One possible solution: [20, 10, 10, 2]
 	Total number of solutions: 3
-	Total number of Fails: 1
+	Total number of Fails: 114
 	
 	Total number of solutions: 0
-	Total number of Fails: 14
+	Total number of Fails: 30
+
 	 */
 	
 	/* 
@@ -130,7 +131,10 @@ public class Exercise4
     }
     
     else if(c>=money.length)
+    {
+    	nrOfFails++;
     	return 0;
+    }
     
     else if(pruneTest||sumOfRest<target)
     {
