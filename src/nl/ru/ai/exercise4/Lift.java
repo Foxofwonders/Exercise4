@@ -51,22 +51,8 @@ public class Lift
 	    	nrOfPrunes++;
 	    	return 0;
 	    }
-	    else if(targetWeight<0)
-	    {
-	    	nrOfFails++;
-	    	return 0;
-	    }
-	    else if(targetPeople<0)
-	    {
-	    	nrOfFails++;
-	    	return 0;
-	    }
 	    
-	    else if(currentPerson>=weights.length)
-	    {
-	    	nrOfFails++;
-	    	return 0;
-	    }
+	    
 	    
 	    s.add(weights[currentPerson]);
 	    int with = solutions(weights,people-1,currentPerson+1,targetWeight-weights[currentPerson],targetPeople-1, s);
@@ -97,3 +83,20 @@ public class Lift
 	  }
 
 }
+
+
+//else if(targetWeight<0)
+//{
+//	nrOfFails++;
+//	return 0;
+//}
+//else if(targetPeople<0)
+//{
+//	nrOfFails++;
+//	return 0;
+//}
+//else if(currentPerson>=weights.length)
+//{
+//	nrOfFails++;
+//	return 0;
+//}
