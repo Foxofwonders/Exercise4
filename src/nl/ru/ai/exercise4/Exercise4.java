@@ -55,6 +55,10 @@ public class Exercise4
 	so it only needs one prune and is hence more efficient. Example 3 is even more extreme: Because the paths get pruned,
 	the number of fails decreases from 114 to 2.
 	So Pruning prevents the function from following "doomed" paths.
+	
+	The number of prunes versus the number of change mainly depends on the order of the prune test and the 'fail test'.
+	Both would return, so which is first in line, will win. If prunes are done correctly, you'll never have fails. This is because
+	both prune rules are virtually the same as the 'fail triggering' if statements.
 	 */
 
   public static int nrOfFails;
