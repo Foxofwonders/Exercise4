@@ -39,8 +39,8 @@ public class Exercise4
 	One possible solution: [20, 10, 10, 2]
 	One possible solution: [20, 10, 10, 2]
 	Total number of solutions: 3
-	Total number of Fails: 2
-	Total number of Prunes: 3
+	Total number of Fails: 0
+	Total number of Prunes: 5
 	
 	Total number of solutions: 0
 	Total number of Fails: 0
@@ -49,10 +49,12 @@ public class Exercise4
 	
 	/* 
 	1d:
-	A lot of fails can be prevented by a single prune, like at the example money1.
-	In 1b it takes the function 7 fails to know, that there is no solution. 
+	A lot of fails can be prevented by a single prune, like in the example money1.
+	In 1b it takes the function 8 fails to know, that there is no solution. 
 	But with the test it detects instantly, that the smallest value of untried coins is still bigger than the target, 
-	so it only needs one prune and is hence more sufficient.
+	so it only needs one prune and is hence more sufficient. Example 3 is even more extreme: Because the paths get pruned,
+	the number of fails decreases from 114 to 2.
+	So Pruning prevents the function from following "doomed" paths.
 	 */
 
   public static int nrOfFails;
@@ -124,6 +126,11 @@ public class Exercise4
     	showSolution(s);
 	    return 1;
     }
+    else if(pruneTest||sumOfRest<target)
+    {
+    	nrOfPrunes++;
+    	return 0;
+    }
     else if(target<0)
     {
     	nrOfFails++;
@@ -135,13 +142,6 @@ public class Exercise4
     	nrOfFails++;
     	return 0;
     }
-    
-    else if(pruneTest||sumOfRest<target)
-    {
-    	nrOfPrunes++;
-    	return 0;
-    }
-
     
     s.add(money[c]);
     int with = solutions(money,c+1,target-money[c],s);
