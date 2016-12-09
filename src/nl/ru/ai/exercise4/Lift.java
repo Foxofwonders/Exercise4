@@ -35,6 +35,17 @@ public class Lift
 	    System.out.println("");
 	  }
 
+	/**
+	 * Function returns the number of ways of creating the maximum possible target value as a group of people, 
+	 * who don't exceed the max load and max number of 6 starting with current Person.
+	 * @param weights
+	 * @param currentPerson
+	 * @param targetWeight
+	 * @param targetPeople
+	 * @param s
+	 * @param bestSolution
+	 * @return number of ways 
+	 */
 	 private static int solutions(int[] weights, int currentPerson, int targetWeight, int targetPeople, ArrayList<Integer> s, int[] bestSolution)
 	  {
 	    assert weights!=null : "array should be initialized";
@@ -67,8 +78,15 @@ public class Lift
 	    
 	    return with+without;
 	  }
+	 
+	 /**
+	  * Function displays all solutions(when not commented out) and finds the best Solution and saves it in an array
+	  * @param s
+	  * @param bestSolution
+	  */
 	 private static void showSolution( ArrayList<Integer> s, int[] bestSolution) 
 	  {
+		 assert s!=null: "Error while passing solution";
 		 int sum=0;
 		 int bestSum=0;
 		 for(int i =0;i<s.size();i++)
