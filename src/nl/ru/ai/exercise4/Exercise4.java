@@ -39,7 +39,7 @@ public class Exercise4
 	One possible solution: [20, 10, 10, 2]
 	One possible solution: [20, 10, 10, 2]
 	Total number of solutions: 3
-	Total number of Fails: 1
+	Total number of Fails: 2
 	Total number of Prunes: 3
 	
 	Total number of solutions: 0
