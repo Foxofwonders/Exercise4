@@ -52,7 +52,7 @@ public class Exercise4
 	A lot of fails can be prevented by a single prune, like in the example money1.
 	In 1b it takes the function 8 fails to know, that there is no solution. 
 	But with the test it detects instantly, that the smallest value of untried coins is still bigger than the target, 
-	so it only needs one prune and is hence more sufficient. Example 3 is even more extreme: Because the paths get pruned,
+	so it only needs one prune and is hence more efficient. Example 3 is even more extreme: Because the paths get pruned,
 	the number of fails decreases from 114 to 2.
 	So Pruning prevents the function from following "doomed" paths.
 	 */
