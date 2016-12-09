@@ -37,16 +37,21 @@ public class Sudoko
 	    	// repair 
 	    } 
 	}
-	private static boolean valid(int[] puzzle) {
+	private static boolean valid(int[] puzzle) 
+	{
+		boolean isValid=true;
 		// TODO Auto-generated method stub
-		return false;
+		return isValid;
 	}
-	private static void dump(int[] puzzle) {
+	private static void dump(int[] puzzle) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
-	private static int firstFree(int[] puzzle) {
+	private static int firstFree(int[] puzzle) 
+	{
+		int freePos=0;
 		// TODO Auto-generated method stub
-		return 0;
+		return freePos;
 	}  
 }
