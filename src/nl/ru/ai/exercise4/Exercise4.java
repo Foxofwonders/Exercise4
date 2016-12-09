@@ -132,16 +132,12 @@ public class Exercise4
     else if(c>=money.length)
     	return 0;
     
-    else if(pruneTest)
+    else if(pruneTest||sumOfRest<target)
     {
     	nrOfPrunes++;
     	return 0;
     }
-    else if(sumOfRest<target)
-    {
-    	nrOfPrunes++;
-    	return 0;
-    }
+
     
     s.add(money[c]);
     int with = solutions(money,c+1,target-money[c],s);
