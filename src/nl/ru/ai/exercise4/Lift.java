@@ -13,11 +13,10 @@ public class Lift
 		ArrayList<Integer> s = new ArrayList<Integer>( ); 
 	    int[] weights= { 30, 40, 41, 80, 90, 50, 55, 92, 66, 82, 62, 70};
 	    
-	    int people = weights.length;
 	    int targetWeight=500;
 	    int targetPeople=6;
 	    int[] bestSolution = new int[targetPeople];
-	    System.out.println("Total number of solutions: " + solutions(weights,people,0,targetWeight,targetPeople,s, bestSolution));
+	    System.out.println("Total number of solutions: " + solutions(weights,0,targetWeight,targetPeople,s, bestSolution));
 	    int bestSum=0;
 		 for(int i =0;i<bestSolution.length;i++)
 		 {
@@ -36,7 +35,18 @@ public class Lift
 	    System.out.println("");
 	  }
 
-	 private static int solutions(int[] weights,int people, int currentPerson, int targetWeight, int targetPeople, ArrayList<Integer> s, int[] bestSolution)
+	/**
+	 * Function returns the number of ways of creating the maximum possible target value as a group of people, 
+	 * who don't exceed the max load and max number of 6 starting with current Person.
+	 * @param weights
+	 * @param currentPerson
+	 * @param targetWeight
+	 * @param targetPeople
+	 * @param s
+	 * @param bestSolution
+	 * @return number of ways 
+	 */
+	 private static int solutions(int[] weights, int currentPerson, int targetWeight, int targetPeople, ArrayList<Integer> s, int[] bestSolution)
 	  {
 	    assert weights!=null : "array should be initialized";
 	    assert currentPerson>=0 && currentPerson<=weights.length;
@@ -62,14 +72,21 @@ public class Lift
 	    
 	    
 	    s.add(weights[currentPerson]);
-	    int with = solutions(weights,people-1,currentPerson+1,targetWeight-weights[currentPerson],targetPeople-1, s, bestSolution);
+	    int with = solutions(weights,currentPerson+1,targetWeight-weights[currentPerson],targetPeople-1, s, bestSolution);
 	    s.remove(s.size()-1);
-	    int without = solutions(weights,people,currentPerson+1,targetWeight,targetPeople, s, bestSolution);
+	    int without = solutions(weights,currentPerson+1,targetWeight,targetPeople, s, bestSolution);
 	    
 	    return with+without;
 	  }
+	 
+	 /**
+	  * Function displays all solutions(when not commented out) and finds the best Solution and saves it in an array
+	  * @param s
+	  * @param bestSolution
+	  */
 	 private static void showSolution( ArrayList<Integer> s, int[] bestSolution) 
 	  {
+		 assert s!=null: "Error while passing solution";
 		 int sum=0;
 		 int bestSum=0;
 		 for(int i =0;i<s.size();i++)
@@ -86,24 +103,8 @@ public class Lift
 			 }
 		 }
 		 
-		//  System.out.println("One possible solution: " + s + " = " + sum);
+		 // System.out.println("One possible solution: " + s + " = " + sum);
 	  }
 
 }
 
-
-//else if(targetWeight<0)
-//{
-//	nrOfFails++;
-//	return 0;
-//}
-//else if(targetPeople<0)
-//{
-//	nrOfFails++;
-//	return 0;
-//}
-//else if(currentPerson>=weights.length)
-//{
-//	nrOfFails++;
-//	return 0;
-//}
