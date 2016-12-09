@@ -11,7 +11,7 @@ public class Lift
 	  {
 		ArrayList<Integer> s = new ArrayList<Integer>( ); 
 	    int[] weights= { 30, 40, 41, 80, 90, 50, 55, 92, 66, 82, 62, 70};
-	    int people = 13;
+	    int people = weights.length;
 	    int targetWeight=500;
 	    int targetPeople=6;
 	    System.out.println("Total number of solutions: " + solutions(weights,people,0,targetWeight,targetPeople,s));
@@ -36,7 +36,7 @@ public class Lift
 	    		pruneTest = false;
 	    	}
 	    }
-	    if(targetWeight==0)
+	    if(targetWeight>=0 && targetPeople==0)
 	    {
 	    	showSolution(s);
 		    return 1;
@@ -51,6 +51,11 @@ public class Lift
 	    	nrOfFails++;
 	    	return 0;
 	    }
+	    else if(targetPeople<0)
+	    {
+	    	nrOfFails++;
+	    	return 0;
+	    }
 	    
 	    else if(currentPerson>=weights.length)
 	    {
@@ -59,7 +64,7 @@ public class Lift
 	    }
 	    
 	    s.add(weights[currentPerson]);
-	    int with = solutions(weights,people,currentPerson+1,targetWeight-weights[currentPerson],targetPeople, s);
+	    int with = solutions(weights,people-1,currentPerson+1,targetWeight-weights[currentPerson],targetPeople-1, s);
 	    s.remove(s.size()-1);
 	    int without = solutions(weights,people,currentPerson+1,targetWeight,targetPeople, s);
 	    
