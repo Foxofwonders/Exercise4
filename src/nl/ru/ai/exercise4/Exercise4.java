@@ -160,6 +160,7 @@ public class Exercise4
    */
   private static void showSolution( ArrayList<Integer> s) 
   {
+	  assert true;
 	  System.out.println("One possible solution: " + s);
   }
 
