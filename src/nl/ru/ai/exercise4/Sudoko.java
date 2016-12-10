@@ -14,14 +14,19 @@ public class Sudoko
 	{
 		int [ ] puzzle =new int[DIM*DIM];
 		readFile("Sudoko.txt",puzzle);
+		System.out.println("Initial Sudoko:");
 		printPuzzle(puzzle);
 		solve(puzzle);
 		
 		
 	}
-	
+	/**
+	 * reads Sudoko from file and saves it in an array
+	 */
 	private static void readFile(String filename, int[] puzzle) 
 	{
+		assert filename!=null : "Filename missing";
+		assert puzzle!=null : "Puzzle should be initialized";
 		FileInputStream inputStream;
 		try {
 			inputStream = new FileInputStream(filename);
@@ -39,21 +44,35 @@ public class Sudoko
 		}
 
 	}
-
-	static int toPostion(int row, int col)
-	{
-		return row*DIM+col; 
-	}
+	/**
+	 * Converts position in array to the row in the Sudoko
+	 * @param pos
+	 * @return row
+	 */
 	static int posToRow(int pos)
 	{
+		assert true;
 		return pos/DIM; 
 	}
+	
+	/**
+	 * Converts position in array to the column in the Sudoko
+	 * @param pos
+	 * @return column
+	 */
 	static int posToCol(int pos)
 	{
+		assert true;
 		return pos%DIM; 
 	}
+	
+	/**
+	 * Solves the Sudoko
+	 * @param puzzle
+	 */
 	static void solve(int [ ] puzzle) 
 	{
+		assert puzzle!=null : "Puzzle should be initialized"; 
 		int free=firstFree(puzzle); 
 	    if(free==puzzle.length) 
 	    {
@@ -76,8 +95,15 @@ public class Sudoko
 	    }
 	    
 	}
-	private static boolean valid(int[] puzzle) {
-		
+	
+	/**
+	 * Checks whether the Sudoko is valid according to the rules.
+	 * @param puzzle
+	 * @return validity
+	 */
+	private static boolean valid(int[] puzzle) 
+	{
+		assert puzzle!=null : "Puzzle should be initialized";
 		for(int i=0;i<puzzle.length;i++)
 		{
 			for(int j=0;j<puzzle.length;j++)
@@ -94,27 +120,45 @@ public class Sudoko
 					{
 						nrOfPrunes++;
 						return false;
-					}
-							
+					}	
 				}
 			}
 		}
 		return true;
 	}
 	
-	private static void dump(int[] puzzle) {
+	/**
+	 * Prints out a possible solution
+	 * @param puzzle
+	 */
+	private static void dump(int[] puzzle) 
+	{
+		assert puzzle!=null : "Puzzle should be initialized";
 		printPuzzle(puzzle);
 	}
 	
+	/**
+	 * Checks whether the elements of the array are in the same 3x3 box
+	 * @param i
+	 * @param j
+	 * @return isInBox
+	 */
 	private static boolean isInBox(int i, int j) 
 	{
+		assert true;
 		if(boxes[i]==boxes[j])
 			return true;
 		else
 			return false;
 	}
 	
-	private static void printPuzzle(int[] puzzle) {
+	/**
+	 * Prints out Sudoko
+	 * @param puzzle
+	 */
+	private static void printPuzzle(int[] puzzle) 
+	{
+		assert puzzle!=null : "Puzzle should be initialized";
 		for(int i=0;i<puzzle.length;i++)
 		{
 			if((i/DIM)>((i-1)/DIM))
@@ -129,10 +173,16 @@ public class Sudoko
 		}
 		System.out.println("");
 		System.out.println("");
-		
 	}
 	
-	private static int firstFree(int[] puzzle) {
+	/**
+	 * Finds the first "free"(=0) element of the array
+	 * @param puzzle
+	 * @return first free element
+	 */
+	private static int firstFree(int[] puzzle) 
+	{
+		assert puzzle!=null : "Puzzle should be initialized";
 		for(int i=0;i<puzzle.length;i++)
 		{
 			if(puzzle[i]==0)

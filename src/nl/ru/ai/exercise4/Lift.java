@@ -12,7 +12,6 @@ public class Lift
 	  {
 		ArrayList<Integer> s = new ArrayList<Integer>( ); 
 	    int[] weights= { 30, 40, 41, 80, 90, 50, 55, 92, 66, 82, 62, 70};
-	    
 	    int targetWeight=500;
 	    int targetPeople=6;
 	    int[] bestSolution = new int[targetPeople];
@@ -50,6 +49,8 @@ public class Lift
 	  {
 	    assert weights!=null : "array should be initialized";
 	    assert currentPerson>=0 && currentPerson<=weights.length;
+	    assert bestSolution!=null : "should be initialized";
+	    assert s!=null : "should be initialized";
 	    boolean pruneTest = true;
 	    for(int i=currentPerson;i<weights.length;i++)
 	    {
@@ -68,9 +69,6 @@ public class Lift
 	    	nrOfPrunes++;
 	    	return 0;
 	    }
-	    
-	    
-	    
 	    s.add(weights[currentPerson]);
 	    int with = solutions(weights,currentPerson+1,targetWeight-weights[currentPerson],targetPeople-1, s, bestSolution);
 	    s.remove(s.size()-1);
@@ -87,6 +85,7 @@ public class Lift
 	 private static void showSolution( ArrayList<Integer> s, int[] bestSolution) 
 	  {
 		 assert s!=null: "Error while passing solution";
+		 assert bestSolution!=null : "should be initialized";
 		 int sum=0;
 		 int bestSum=0;
 		 for(int i =0;i<s.size();i++)
